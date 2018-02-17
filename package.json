@@ -4,7 +4,7 @@
   "description": "Solutions for Project Euler problems.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha \"./Tests/**/*.test.js\"",
+    "test": "mocha --require babel-core/register \"./Tests/**/*.test.js\"",
     "problem1": "node ./Problem1/index.js",
     "problem12": "node ./Problem12/index.js"
   },
@@ -25,7 +25,13 @@
   },
   "homepage": "https://github.com/beau-witter/ProjectEuler#readme",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
     "mocha": "^5.0.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "babel": {
+    "presets": ["env"]
+  }
 }
