@@ -1,0 +1,25 @@
+{
+  "name": "project_euler",
+  "version": "1.0.0",
+  "description": "Solutions for Project Euler problems.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beau-witter/ProjectEuler.git"
+  },
+  "keywords": [
+    "projecteuler",
+    "js",
+    "node",
+    "tdd"
+  ],
+  "author": "Beau Witter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beau-witter/ProjectEuler/issues"
+  },
+  "homepage": "https://github.com/beau-witter/ProjectEuler#readme"
+}
