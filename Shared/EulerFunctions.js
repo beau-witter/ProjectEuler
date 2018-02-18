@@ -36,3 +36,15 @@ export function calculateFactorCount(number) {
 
     return factorCount;
 }
+
+export function getMultiplesOfXLessThanY(x, y) {
+    const multiples = [];
+
+    let multiple = x;
+    while(multiple < y) {
+        multiples.push(multiple);
+        multiple += x;
+    }
+
+    return multiples;
+}
