@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require babel-core/register \"./Tests/**/*.test.js\"",
-    "problem1": "node ./Problem1/index.js",
-    "build:problem12": "webpack --config webpack.config.js --progress --colors",
+    "build": "webpack --config webpack.config.js --progress --colors",
+    "exec:problem1": "node ./Problem1/index-bundled-compiled.js",
     "exec:problem12": "node ./Problem12/index-bundled-compiled.js"
   },
   "repository": {
@@ -17,7 +17,8 @@
     "projecteuler",
     "js",
     "node",
-    "tdd"
+    "tdd",
+    "npm"
   ],
   "author": "Beau Witter",
   "license": "MIT",

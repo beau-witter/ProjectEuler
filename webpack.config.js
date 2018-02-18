@@ -1,4 +1,4 @@
-var problem12 = {
+var common = {
     module: {
         rules: [
             {
@@ -11,13 +11,25 @@ var problem12 = {
                 }
             }
         ]
-    },
+    }
+}
+
+var problem1 = Object.assign({}, common, {
+    name: "Problem 1",
+    entry: "./Problem1/index.js",
+    output: {
+        path: __dirname + "/Problem1",
+        filename: "index-bundled-compiled.js"
+    }
+});
+
+var problem12 = Object.assign({}, common, {
     name: "Problem 12",
     entry: "./Problem12/index.js",
     output: {
         path: __dirname + "/Problem12",
         filename: "index-bundled-compiled.js"
     }
-};
+});
 
-module.exports = [problem12];
+module.exports = [problem1, problem12];
