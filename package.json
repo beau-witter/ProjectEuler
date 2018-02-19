@@ -7,6 +7,7 @@
     "test": "mocha --require babel-core/register \"./Tests/**/*.test.js\"",
     "build": "webpack --config webpack.config.js --progress --colors",
     "exec:problem1": "node ./Problem1/index-bundled-compiled.js",
+    "exec:problem2": "node ./Problem2/index-bundled-compiled.js",
     "exec:problem12": "node ./Problem12/index-bundled-compiled.js"
   },
   "repository": {

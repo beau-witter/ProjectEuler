@@ -95,3 +95,31 @@ describe("getMultiplesOfXLessThanY", () => {
         assert.equal(result[2], expectedArray[2]);
     });
 });
+
+describe("calculateEvenFibonacciNumbers", () => {
+    it("returns the expected numbers less than the limit given", () => {
+        //arrange
+        const expectedFibs = [2, 8];
+        const inputLimit = 10;
+
+        //act
+        const result = EulerFunctions.calculateEvenFibonacciNumbers(inputLimit);
+
+        //assert
+        assert.equal(result.length, expectedFibs.length);
+        assert.equal(result[0], expectedFibs[0]);
+        assert.equal(result[1], expectedFibs[1]);
+    });
+
+    it("returns empty array if no numbers were found", () => {
+        //arrange
+        const expectedFibs = [];
+        const inputLimit = 1;
+
+        //act
+        const result = EulerFunctions.calculateEvenFibonacciNumbers(inputLimit);
+
+        //assert
+        assert.equal(result.length, expectedFibs.length);
+    })
+});

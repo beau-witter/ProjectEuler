@@ -23,6 +23,15 @@ var problem1 = Object.assign({}, common, {
     }
 });
 
+var problem2 = Object.assign({}, common, {
+    name: "Problem 2",
+    entry: "./Problem2/index.js",
+    output: {
+        path: __dirname + "/Problem2",
+        filename: "index-bundled-compiled.js"
+    }
+});
+
 var problem12 = Object.assign({}, common, {
     name: "Problem 12",
     entry: "./Problem12/index.js",
@@ -32,4 +41,4 @@ var problem12 = Object.assign({}, common, {
     }
 });
 
-module.exports = [problem1, problem12];
+module.exports = [problem1, problem2, problem12];

@@ -48,3 +48,19 @@ export function getMultiplesOfXLessThanY(x, y) {
 
     return multiples;
 }
+
+export function calculateEvenFibonacciNumbers(upperLimit) {
+    let fibAdding = 0;
+    let currentEvenFib = 2;
+    let evenFibs = [];
+
+    while(currentEvenFib < upperLimit) {
+        evenFibs.push(currentEvenFib);
+
+        const nextFibAdding = currentEvenFib / 2;
+        currentEvenFib = ((currentEvenFib * 2) + fibAdding) * 2;
+        fibAdding = nextFibAdding;
+    }
+    
+    return evenFibs;
+}
