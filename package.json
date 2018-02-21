@@ -2,7 +2,6 @@
   "name": "project_euler",
   "version": "1.0.0",
   "description": "Solutions for Project Euler problems.",
-  "main": "index.js",
   "scripts": {
     "test": "mocha --require babel-core/register \"./Tests/**/*.test.js\"",
     "build": "webpack --config webpack.config.js --progress --colors",
