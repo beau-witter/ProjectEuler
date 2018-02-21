@@ -64,3 +64,45 @@ export function calculateEvenFibonacciNumbers(upperLimit) {
     
     return evenFibs;
 }
+
+const compareNumbers = function (a, b) {
+    return a - b;
+};
+
+export function calculateFactors(numberToFactor) {
+    let potentialFactor = 1;
+    let factors = [];
+    let numberToFactorSqrt = Math.sqrt(numberToFactor);
+
+    while(potentialFactor <= numberToFactorSqrt) {
+        if(numberToFactor % potentialFactor === 0) {
+            if(potentialFactor === (numberToFactor / potentialFactor)) {
+                factors.push(potentialFactor);
+            } else {
+                factors.push(potentialFactor);
+                factors.push(numberToFactor / potentialFactor);
+            }
+        }
+        potentialFactor++;
+    }
+
+    return factors.sort(compareNumbers);
+}
+
+export function isPrime(potentialPrime) {
+    let potentialFactor = 2;
+
+    if(potentialPrime === 1) {
+        return false;
+    }
+
+    while(potentialFactor < potentialPrime) {
+        if(potentialPrime % potentialFactor === 0) {
+            return false;
+        }
+
+        potentialFactor++;
+    }
+
+    return true;
+}

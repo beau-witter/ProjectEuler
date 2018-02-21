@@ -123,3 +123,80 @@ describe("calculateEvenFibonacciNumbers", () => {
         assert.equal(result.length, expectedFibs.length);
     })
 });
+
+describe("calculateFactors", () => {
+    it("returns one factor for 1", () => {
+        //arrange
+        const expectedFactors = [1];
+        const inputNumber = 1;
+
+        //act
+        const result = EulerFunctions.calculateFactors(inputNumber);
+
+        //assert
+        assert.equal(result.length, expectedFactors.length);
+        assert.equal(result[0], expectedFactors[0]);
+    });
+
+    it("returns two factors for prime numbers", () => {
+        //arrange
+        const expectedFactors = [1, 29];
+        const inputNumber = 29;
+
+        //act
+        const result = EulerFunctions.calculateFactors(inputNumber);
+
+        //assert
+        assert.equal(result.length, expectedFactors.length);
+        assert.equal(result[0], expectedFactors[0]);
+        assert.equal(result[1], expectedFactors[1]);
+    });
+
+    it("returns correct factors for the general case", () => {
+        //arrange
+        const expectedFactors = [1, 2, 4, 5, 10, 20, 25, 50, 100];
+        const inputNumber = 100;
+        const compareNumbers = function (a, b) {
+            return a - b;
+        };
+
+        //act
+        const result = EulerFunctions.calculateFactors(inputNumber).sort(compareNumbers);
+
+        //assert
+        assert.equal(result.length, expectedFactors.length);
+        assert.equal(result[0], expectedFactors[0]);
+        assert.equal(result[1], expectedFactors[1]);
+        assert.equal(result[2], expectedFactors[2]);
+        assert.equal(result[3], expectedFactors[3]);
+        assert.equal(result[4], expectedFactors[4]);
+        assert.equal(result[5], expectedFactors[5]);
+        assert.equal(result[6], expectedFactors[6]);
+        assert.equal(result[7], expectedFactors[7]);
+        assert.equal(result[8], expectedFactors[8]);
+    });
+});
+
+describe("isPrime", () => {
+    it("returns true for prime numbers", () => {
+        //arrange
+        const inputNumber = 13;
+
+        //act
+        const result = EulerFunctions.isPrime(inputNumber);
+
+        //assert
+        assert.isTrue(result);
+    });
+
+    it("returns false for non-prime numbers", () => {
+        //arrange
+        const inputNumber = 12;
+
+        //act
+        const result = EulerFunctions.isPrime(inputNumber);
+
+        //assert
+        assert.isFalse(result);
+    });
+});
