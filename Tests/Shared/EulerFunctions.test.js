@@ -156,9 +156,6 @@ describe("calculateFactors", () => {
         //arrange
         const expectedFactors = [1, 2, 4, 5, 10, 20, 25, 50, 100];
         const inputNumber = 100;
-        const compareNumbers = function (a, b) {
-            return a - b;
-        };
 
         //act
         const result = EulerFunctions.calculateFactors(inputNumber).sort(compareNumbers);
