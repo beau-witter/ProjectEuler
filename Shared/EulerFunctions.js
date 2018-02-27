@@ -106,3 +106,7 @@ export function isPrime(potentialPrime) {
 
     return true;
 }
+
+export function isPalindrome(potentialPalindrome) {
+    return potentialPalindrome.toString().split("").reverse().join("") == potentialPalindrome;
+}

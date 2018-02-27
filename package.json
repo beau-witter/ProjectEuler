@@ -8,6 +8,7 @@
     "exec:problem1": "node ./Problem1/index-bundled-compiled.js",
     "exec:problem2": "node ./Problem2/index-bundled-compiled.js",
     "exec:problem3": "node ./Problem3/index-bundled-compiled.js",
+    "exec:problem4": "node ./Problem4/index-bundled-compiled.js",
     "exec:problem12": "node ./Problem12/index-bundled-compiled.js"
   },
   "repository": {

@@ -158,7 +158,7 @@ describe("calculateFactors", () => {
         const inputNumber = 100;
 
         //act
-        const result = EulerFunctions.calculateFactors(inputNumber).sort(compareNumbers);
+        const result = EulerFunctions.calculateFactors(inputNumber);
 
         //assert
         assert.equal(result.length, expectedFactors.length);
@@ -196,4 +196,39 @@ describe("isPrime", () => {
         //assert
         assert.isFalse(result);
     });
+});
+
+describe("isPalindrome", () => {
+    it("returns true for odd length palindrome input", () => {
+        //arrange
+        const palindromeInput = 1003001;
+
+        //act
+        const result = EulerFunctions.isPalindrome(palindromeInput);
+
+        //assert
+        assert.isTrue(result);
+    });
+
+    it("returns true for even length palindome input", () => {
+        //arrange
+        const palindromeInput = 194491;
+
+        //act
+        const result = EulerFunctions.isPalindrome(palindromeInput);
+
+        //assert
+        assert.isTrue(result);
+    })
+
+    it("returns false for non-palindrome input", () => {
+        //arrange
+        const nonPalindomeInput = 49559;
+
+        //act
+        const result = EulerFunctions.isPalindrome(nonPalindomeInput);
+
+        //assert
+        assert.isFalse(result);
+    })
 });
