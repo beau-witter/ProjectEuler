@@ -1,20 +1,29 @@
 import {calculateFactors, isPrime} from "./../Shared/EulerFunctions";
+import {Project} from "./../Shared/Project";
 
-let targetNumber = 600851475143;
+const targetNumber = 600851475143;
 
-const startTime = Date.now();
-let factors = calculateFactors(targetNumber);
-let largestPrimeFactor;
+function LargestPrimeFactor(input, output) {
+    const targetNumber = input[0];
 
-for(var reverseIndex = factors.length - 1; reverseIndex > 0; reverseIndex--) {
-    if(isPrime(factors[reverseIndex])) {
-        largestPrimeFactor = factors[reverseIndex];
-        break;
+    let factors = calculateFactors(targetNumber);
+    let largestPrimeFactor;
+
+    for(var reverseIndex = factors.length - 1; reverseIndex > 0; reverseIndex--) {
+        if(isPrime(factors[reverseIndex])) {
+            largestPrimeFactor = factors[reverseIndex];
+            break;
+        }
     }
+
+    output.targetNumber = targetNumber;
+    output.largestPrimeFactor = largestPrimeFactor;
+
+    return output;
 }
 
-const endTime = Date.now();
+function printOutput(input) {
+    console.log("The largest prime factor of " + input.targetNumber + " is: " + input.largestPrimeFactor);
+}
 
-console.log("The largest prime factor of " + targetNumber + " is: " + largestPrimeFactor);
-console.log("Time it took (ms): " + (endTime - startTime));
-console.log("Time is took (s): " + ((endTime - startTime) / 1000));
+Project(LargestPrimeFactor, printOutput, targetNumber);

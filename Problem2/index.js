@@ -1,16 +1,26 @@
 import {calculateEvenFibonacciNumbers} from "./../Shared/EulerFunctions";
+import {Project} from "./../Shared/Project";
 
 const upperLimit = 4000000;
-let evenFibSum = 0;
 
-const startTime = Date.now();
-const evenFibs = calculateEvenFibonacciNumbers(upperLimit);
+function EvenFibonacciNumbers(input, output) {
+    const upperLimit = input[0];
+    let evenFibSum = 0;
 
-evenFibs.forEach(evenFib => {
-    evenFibSum += evenFib;
-});
-const endTime = Date.now();
+    const evenFibs = calculateEvenFibonacciNumbers(upperLimit);
 
-console.log("The sum of all even fibonacci numbers less than " + upperLimit + " is: " + evenFibSum);
-console.log("Time is took (ms): " + (endTime - startTime));
-console.log("Time is took (s): " + ((endTime - startTime) / 1000));
+    evenFibs.forEach(evenFib => {
+        evenFibSum += evenFib;
+    });
+
+    output.upperLimit = upperLimit;
+    output.evenFibSum = evenFibSum;
+
+    return output;
+}
+
+function printOutput(input) {
+    console.log("The sum of all even fibonacci numbers less than " + input.upperLimit + " is: " + input.evenFibSum);
+}
+
+Project(EvenFibonacciNumbers, printOutput, upperLimit);
