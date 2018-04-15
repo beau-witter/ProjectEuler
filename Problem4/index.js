@@ -1,49 +1,59 @@
 import {isPalindrome} from "./../Shared/EulerFunctions";
+import {Project} from "./../Shared/Project";
 
-let largestPalindrome = 0;
-let largestFactor = 999;
-let foundLargestPalindome = false;
+const largestNDigitNumber = 999;
 
-function identifyPalindrome(potentialPalindrome) {
-    if(isPalindrome(potentialPalindrome)) {
-        foundLargestPalindome = true;
-        largestPalindrome = potentialPalindrome;
+function LargestPalindomeProduct(input, output) {
+    function identifyPalindrome(potentialPalindrome) {
+        if(isPalindrome(potentialPalindrome)) {
+            foundLargestPalindome = true;
+            largestPalindrome = potentialPalindrome;
+        }
     }
-}
-
-const startTime = Date.now();
-let numbersToCalc = 1;
-let calculatedNumbers;
-let currentMainNumber = largestFactor;
-while(!foundLargestPalindome) {
-    calculatedNumbers = 0;
-    let maxDifference = Math.floor(numbersToCalc / 2);
-
-    // Asymmetrical
-    let currentDifference = 1;
-    while(calculatedNumbers < Math.floor(numbersToCalc / 2)) {
-        identifyPalindrome((currentMainNumber + currentDifference) * (currentMainNumber - Math.max(0, currentDifference - 1)));
         
-        currentDifference++;
-        calculatedNumbers++;
-    }
+    let largestFactor = input[0];
+    let largestPalindrome = 0;
+    let foundLargestPalindome = false;
 
-    identifyPalindrome(currentMainNumber * currentMainNumber);
-    calculatedNumbers++;
+    let numbersToCalc = 1;
+    let calculatedNumbers;
+    let currentMainNumber = largestFactor;
+    while(!foundLargestPalindome) {
+        calculatedNumbers = 0;
+        let maxDifference = Math.floor(numbersToCalc / 2);
+
+        // Asymmetrical
+        let currentDifference = 1;
+        while(calculatedNumbers < Math.floor(numbersToCalc / 2)) {
+            identifyPalindrome((currentMainNumber + currentDifference) * (currentMainNumber - Math.max(0, currentDifference - 1)));
+            
+            currentDifference++;
+            calculatedNumbers++;
+        }
+
+        identifyPalindrome(currentMainNumber * currentMainNumber);
+        calculatedNumbers++;
+        
+        // Symmetrical
+        currentDifference = 1;
+        while(calculatedNumbers < numbersToCalc) {
+            identifyPalindrome((currentMainNumber + currentDifference) * (currentMainNumber - currentDifference));
+
+            currentDifference++;
+            calculatedNumbers++;
+        }
+        numbersToCalc += 2;
+        currentMainNumber--;
+    }
     
-    // Symmetrical
-    currentDifference = 1;
-    while(calculatedNumbers < numbersToCalc) {
-        identifyPalindrome((currentMainNumber + currentDifference) * (currentMainNumber - currentDifference));
+    output.largestFactorLength = largestFactor.toString().length;
+    output.largestPalindrome = largestPalindrome;
 
-        currentDifference++;
-        calculatedNumbers++;
-    }
-    numbersToCalc += 2;
-    currentMainNumber--;
+    return output;
 }
-const endTime = Date.now();
 
-console.log("The largest palindrome number made from the product of 2 " + largestFactor.toString().length + "-digit numbers is: " + largestPalindrome);
-console.log("Time is took (ms): " + (endTime - startTime));
-console.log("Time is took (s): " + ((endTime - startTime) / 1000));
+function printOutput(input) {
+    console.log("The largest palindrome number made from the product of 2 " + input.largestFactorlength + "-digit numbers is: " + input.largestPalindrome);
+}
+
+Project(LargestPalindomeProduct, printOutput, largestNDigitNumber);

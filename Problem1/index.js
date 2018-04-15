@@ -1,22 +1,33 @@
 import {getMultiplesOfXLessThanY} from "./../Shared/EulerFunctions";
+import {Project} from "./../Shared/Project";
 
-// main loop
-const startTime = Date.now();
-const upperLimit = 10000;
-const multiplesOfThree = getMultiplesOfXLessThanY(3, upperLimit);
-const multiplesOfFive = getMultiplesOfXLessThanY(5, upperLimit);
+function MultiplesOfThreeAndFive(input, output) {
+    const upperLimit = input[0];
+    const multiplesOfThree = getMultiplesOfXLessThanY(3, upperLimit);
+    const multiplesOfFive = getMultiplesOfXLessThanY(5, upperLimit);
+    
+    // Taken from https://stackoverflow.com/a/23080662/7636764
+    const mixedMultiples = multiplesOfThree.concat(
+        multiplesOfFive.filter(
+            function (item) {
+                return multiplesOfThree.indexOf(item) < 0;
+            }
+        )
+    );
 
-// Taken from https://stackoverflow.com/a/23080662/7636764
-const mixedMultiples = multiplesOfThree.concat(multiplesOfFive.filter(function (item) {
-    return multiplesOfThree.indexOf(item) < 0;
-}));
+    let sum = 0;
+    mixedMultiples.forEach(function(multiple) {
+        sum += multiple;
+    });
 
-let sum = 0;
-mixedMultiples.forEach(function(multiple) {
-    sum += multiple;
-});
-const endTime = Date.now();
+    output.upperLimit = upperLimit;
+    output.sum = sum;
 
-console.log("The sum of all multiples of either 3 or 5 less than " + upperLimit + " is: " + sum);
-console.log("Time is took (ms): " + (endTime - startTime));
-console.log("Time is took (s): " + ((endTime - startTime) / 1000));
+    return output;
+}
+
+function printOutput(input) {
+    console.log("The sum of all multiples of either 3 or 5 less than " + input.upperLimit + " is: " + input.sum);
+}
+
+Project(MultiplesOfThreeAndFive, printOutput, 10000);
