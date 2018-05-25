@@ -3,7 +3,7 @@ import {Project} from "./../Shared/Project";
 
 const upperLimit = 4000000;
 
-function EvenFibonacciNumbers(input, output) {
+function EvenFibonacciNumbers(input: number[]) {
     const upperLimit = input[0];
     let evenFibSum = 0;
 
@@ -13,14 +13,12 @@ function EvenFibonacciNumbers(input, output) {
         evenFibSum += evenFib;
     });
 
-    output.upperLimit = upperLimit;
-    output.evenFibSum = evenFibSum;
-
-    return output;
+    return {upperLimit, evenFibSum};
 }
 
 function printOutput(input) {
     console.log("The sum of all even fibonacci numbers less than " + input.upperLimit + " is: " + input.evenFibSum);
 }
 
-Project(EvenFibonacciNumbers, printOutput, upperLimit);
+const project2 = new Project(EvenFibonacciNumbers, printOutput, [upperLimit]);
+project2.execute();

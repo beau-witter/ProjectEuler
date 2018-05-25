@@ -1,62 +1,36 @@
-var common = {
+const path = require("path");
+const webpack = require("webpack");
+
+module.exports = {
+    mode: "development",
+    entry: {
+        problem1: "./Problem1/index.ts",
+        problem2: "./Problem2/index.ts",
+        problem3: "./Problem3/index.ts",
+        problem4: "./Problem4/index.ts",
+        problem12: "./Problem12/index.ts"
+    },
+    output: {
+        path: path.resolve(__dirname, "js"),
+        filename: "[name].entry.js"
+    },
     module: {
         rules: [
             {
-                exclude: /(node_modules)/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: "env"
-                    }
-                }
+                test: /\.js$/, use: "babel-loader", exclude: /node_modules/
+            },
+            {
+                test: /\.ts$/, use: ["babel-loader", "ts-loader"], exclude: /node_modules/
             }
         ]
+    },
+    resolve: {
+        extensions: [".js", ".ts"],
+        modules: [
+            "node_modules"
+        ],
+        alias: {
+            "@": path.resolve(__dirname, "Shared")
+        }
     }
 }
-
-var problem1 = Object.assign({}, common, {
-    name: "Problem 1",
-    entry: "./Problem1/index.js",
-    output: {
-        path: __dirname + "/Problem1",
-        filename: "index-bundled-compiled.js"
-    }
-});
-
-var problem2 = Object.assign({}, common, {
-    name: "Problem 2",
-    entry: "./Problem2/index.js",
-    output: {
-        path: __dirname + "/Problem2",
-        filename: "index-bundled-compiled.js"
-    }
-});
-
-var problem3 = Object.assign({}, common, {
-    name: "Problem 3",
-    entry: "./Problem3/index.js",
-    output: {
-        path: __dirname + "/Problem3",
-        filename: "index-bundled-compiled.js"
-    }
-});
-
-var problem4 = Object.assign({}, common, {
-    name: "Problem 4",
-    entry: "./Problem4/index.js",
-    output: {
-        path: __dirname + "/Problem4",
-        filename: "index-bundled-compiled.js"
-    }
-});
-
-var problem12 = Object.assign({}, common, {
-    name: "Problem 12",
-    entry: "./Problem12/index.js",
-    output: {
-        path: __dirname + "/Problem12",
-        filename: "index-bundled-compiled.js"
-    }
-});
-
-module.exports = [problem1, problem2, problem3, problem4, problem12];

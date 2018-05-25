@@ -3,7 +3,7 @@ import {Project} from "./../Shared/Project";
 
 const targetNumber = 600851475143;
 
-function LargestPrimeFactor(input, output) {
+function LargestPrimeFactor(input: number[]) {
     const targetNumber = input[0];
 
     let factors = calculateFactors(targetNumber);
@@ -16,14 +16,12 @@ function LargestPrimeFactor(input, output) {
         }
     }
 
-    output.targetNumber = targetNumber;
-    output.largestPrimeFactor = largestPrimeFactor;
-
-    return output;
+    return { targetNumber, largestPrimeFactor };
 }
 
 function printOutput(input) {
     console.log("The largest prime factor of " + input.targetNumber + " is: " + input.largestPrimeFactor);
 }
 
-Project(LargestPrimeFactor, printOutput, targetNumber);
+const project3 = new Project(LargestPrimeFactor, printOutput, [targetNumber]);
+project3.execute();
