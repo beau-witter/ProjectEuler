@@ -3,7 +3,7 @@ import {Project} from "./../Shared/Project";
 
 const largestNDigitNumber = 999;
 
-function LargestPalindomeProduct(input, output) {
+function LargestPalindomeProduct(input: number[]) {
     function identifyPalindrome(potentialPalindrome) {
         if(isPalindrome(potentialPalindrome)) {
             foundLargestPalindome = true;
@@ -16,7 +16,7 @@ function LargestPalindomeProduct(input, output) {
     let foundLargestPalindome = false;
 
     let numbersToCalc = 1;
-    let calculatedNumbers;
+    let calculatedNumbers: number;
     let currentMainNumber = largestFactor;
     while(!foundLargestPalindome) {
         calculatedNumbers = 0;
@@ -46,14 +46,12 @@ function LargestPalindomeProduct(input, output) {
         currentMainNumber--;
     }
     
-    output.largestFactorLength = largestFactor.toString().length;
-    output.largestPalindrome = largestPalindrome;
-
-    return output;
+    return { largestFactorLength: largestFactor.toString().length, largestPalindrome};
 }
 
 function printOutput(input) {
     console.log("The largest palindrome number made from the product of 2 " + input.largestFactorlength + "-digit numbers is: " + input.largestPalindrome);
 }
 
-Project(LargestPalindomeProduct, printOutput, largestNDigitNumber);
+const project4 = new Project(LargestPalindomeProduct, printOutput, [largestNDigitNumber]);
+project4.execute();

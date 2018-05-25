@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Solutions for Project Euler problems.",
   "scripts": {
-    "test": "mocha --require babel-core/register \"./Tests/**/*.test.js\"",
+    "test": "mocha --require ts-node/register \"./Tests/**/*.test.ts\"",
     "build": "webpack --config webpack.config.js --progress --colors",
-    "exec:problem1": "node ./Problem1/index-bundled-compiled.js",
-    "exec:problem2": "node ./Problem2/index-bundled-compiled.js",
-    "exec:problem3": "node ./Problem3/index-bundled-compiled.js",
-    "exec:problem4": "node ./Problem4/index-bundled-compiled.js",
-    "exec:problem12": "node ./Problem12/index-bundled-compiled.js"
+    "exec:problem1": "node ./js/problem1.entry.js",
+    "exec:problem2": "node ./js/problem2.entry.js",
+    "exec:problem3": "node ./js/problem3.entry.js",
+    "exec:problem4": "node ./js/problem4.entry.js",
+    "exec:problem12": "node ./js/problem12.entry.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
     "js",
     "node",
     "tdd",
-    "npm"
+    "npm",
+    "typescript"
   ],
   "author": "Beau Witter",
   "license": "MIT",
@@ -35,9 +36,17 @@
     "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "mocha": "^5.0.1",
-    "webpack": "^3.11.0"
+    "webpack-cli": "^2.1.4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/chai": "^4.1.3",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^10.1.2",
+    "ts-loader": "^4.3.0",
+    "ts-node": "^6.0.5",
+    "typescript": "^2.8.3",
+    "webpack": "^4.9.0"
+  },
   "babel": {
     "presets": [
       "env"
