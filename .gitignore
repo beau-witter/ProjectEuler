@@ -4,4 +4,4 @@
 **/node_modules/
 
 # production
-**/*compiled.js
+**/js

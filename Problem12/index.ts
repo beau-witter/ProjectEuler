@@ -3,7 +3,7 @@ import {Project} from "./../Shared/Project";
 
 const largestFactorCount = 500;
 
-function HighlyDivisibleTriangleNumber(input, output) {
+function HighlyDivisibleTriangleNumber(input: number[]) {
     let storage = {
         largestFactorCount: 0,
         nthLargestFactorCountTriangleNumber: 0,
@@ -21,9 +21,8 @@ function HighlyDivisibleTriangleNumber(input, output) {
     }
 
     storage.nthTriangleNumber = calculateTriangleNumber(storage.nthTriangleNumber);
-    output.storage = storage;
 
-    return output;
+    return { storage};
 }
 
 function printOutput(input) {
@@ -32,4 +31,5 @@ function printOutput(input) {
     console.log("Number of factors: " + input.storage.largestFactorCount);
 }
 
-Project(HighlyDivisibleTriangleNumber, printOutput, largestFactorCount);
+const project12 = new Project(HighlyDivisibleTriangleNumber, printOutput, [largestFactorCount]);
+project12.execute();
